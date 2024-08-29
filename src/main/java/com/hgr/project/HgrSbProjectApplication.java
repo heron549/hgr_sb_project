@@ -1,0 +1,13 @@
+package com.hgr.project;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class HgrSbProjectApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(HgrSbProjectApplication.class, args);
+	}
+
+}
