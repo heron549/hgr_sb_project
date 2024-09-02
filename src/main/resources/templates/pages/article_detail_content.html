@@ -1,0 +1,45 @@
+<div th:fragment="frag_index_content" class="content-wrapper">
+
+	<section class="intro" style="height: 100%;">
+		<div class="bg-image h-100"
+			style="background-image: url('https://mdbootstrap.com/img/Photos/new-templates/glassmorphism-article/img7.jpg'); height: 100%; overflow: hidden;">
+			<div class="mask d-flex align-items-center h-100"
+				style="display: flex; align-items: center; height: 100%; overflow: hidden;">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12">
+
+
+							<div class="card-detail">
+								<div class="card-header" th:text="${ article.subject}"></div>
+								<div class="card-body">
+									<p class="card-text" th:text="${ article.content}"></p>
+								</div>
+								<div class="card-footer">
+									<div th:text="${ #temporals.format( article.getCreateDate(), 'yyyy-MM-dd HH:mm:ss')  }"></div>
+																
+								</div>
+								<div class="button-group">
+									<button class="btn-detail btn-edit" th:href="|/article/modify/${article.id}|">수정</button>
+									<form method="delete" th:action="@{|/article/delete/${article.id}|}">
+									<input  class="btn-detail btn-delete" type="submit" value="삭제"></input>
+									</form>
+								</div>
+							</div>
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+</div>

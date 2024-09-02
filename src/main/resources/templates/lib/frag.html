@@ -1,0 +1,14 @@
+<!-- 
+	- 모든 페이지에 공통으로 들어가는 조각들을 모은 html 
+	- 실습 2분, 입력폼 오류를 처리하는 모듈을 frag.html에 기술하여 3개 html에 각각 삽입하시오
+	- 이름 : formErrorFrag
+-->
+<div th:fragment="formErrorFrag" class="alert alert-danger" role="alert" th:if="${ #fields.hasAnyErrors() }">
+	<div th:each="err : ${ #fields.allErrors() }" th:text="${err}" />
+</div>
+
+<div th:fragment="loginError" th:if="${param.error}">
+    <div class="alert alert-danger">
+        입력하신 정보와 사용자 정보가 일치하지 않습니다.
+    </div>
+</div>

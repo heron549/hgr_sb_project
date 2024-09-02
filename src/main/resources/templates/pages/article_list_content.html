@@ -15,19 +15,20 @@
                                         <table class="table table-borderless text-white mb-0">
                                             <thead>
                                                 <tr>
+                                                    <th scope="col" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">글번호</th>
                                                     <th scope="col" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">제목</th>
                                                     <th scope="col" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">작성일시</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr th:each="post, idx: ${posts}">
+                                                <tr th:each="article, idx: ${articles}">
+													<td>[[ ${ idx.count } ]]</td>
                                                     <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                    <a th:href="@{|/post/detail/${ post.id }|}" th:text="${ post.subject }"></a>
-                                                    </td>
+                                                    <a th:href="@{|/article/detail/${ article.id }|}" th:text="${ article.subject }"></a>
                                                     </td>
 													<!-- 엔티티의 Getter를 이용하여 값 출력 -->
 													<!-- 타임리프의 시간 포멧팅 처리 함수를 활용 -->
-													<td th:text="${ #temporals.format( post.getCreateDate(), 'yyyy-MM-dd HH:mm:ss')  }">
+													<td th:text="${ #temporals.format( article.getCreateDate(), 'yyyy-MM-dd HH:mm:ss')  }">
 													</td>
 						
                                                 </tr>
@@ -35,7 +36,7 @@
                                             </tbody>
                                         </table>
                                         <div class="btn-container" style="display: flex; justify-content: center; margin-top: 20px;">
-                                            <a class="ui-btn">글쓰기</a><br>
+                                            <a th:href="@{/article/create}"  class="ui-btn">글쓰기</a><br>
                                         </div>
                                     </div>
                                 </div>
