@@ -19,12 +19,14 @@ import lombok.Setter;
 @Entity
 public class Article {
 
+	// json 변경시 무시, 단 id에서는 미사용 -> 리뷰를 가져올려면 필요
+	// @JsonIgnore
 	@Id
 	// 오라클 11g 미지원 , 18이상은 지원
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	// 오라클 11g에 맞게 수정
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_generator1")
-//	@SequenceGenerator(name = "sequence_generator1", sequenceName = "sequence_name1", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_generator1")
+	@SequenceGenerator(name = "sequence_generator1", sequenceName = "sequence_name1", allocationSize = 1)
 	private Integer id;
 
 	@Column(length = 128)

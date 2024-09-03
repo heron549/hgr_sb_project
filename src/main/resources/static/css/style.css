@@ -665,6 +665,472 @@
 
 /*** Footer End ***/
 
+
+
+
+/* card-2 */
+.card-2 {
+	width: 100%;
+  max-width: 300px; /* 카드의 최대 너비 설정 */
+  height: auto; /* 높이는 내용에 맞게 조정 */
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow: 15px 15px 30px #bebebe,
+              -15px -15px 30px #ffffff;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 제목과 내용을 카드 상하로 균일하게 배치 */
+  overflow: hidden; /* 내용이 카드 영역을 넘어가면 숨김 처리 */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px; /* 제목과 내용 간격 조정 */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 제목이 길 경우 생략 기호 추가 */
+  white-space: nowrap; /* 제목이 한 줄로 표시되게 설정 */
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 20px; /* 내용과 버튼 간격 조정 */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 내용이 길 경우 생략 기호 추가 */
+  white-space: nowrap; /* 내용이 한 줄로 표시되게 설정 */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  
+}
+/* ui-btn */
+.ui-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  display: inline-block;
+}
+
+.ui-btn::after, .ui-btn::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  transition: width 0.5s;
+}
+
+.ui-btn::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ui-btn::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.ui-btn:hover::after, .ui-btn:hover::before {
+  width: 100%;
+}
+
+
+/* From Uiverse.io by omriluz */ 
+/* 폼 컨테이너 스타일 */
+.form-container {
+  width: 100%; /* 부모 요소 너비에 맞게 조정 */
+  max-width: 1200px; /* 최대 너비 설정 */
+  min-height: 70vh; /* 최소 높이 설정 */
+  background: linear-gradient(#212121, #212121) padding-box,
+              linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px; /* 내부 여백 */
+  font-size: 14px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 내부 요소 간격 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 너비/높이 계산 */
+  border-radius: 16px; /* 테두리 둥글게 처리 */
+  background-size: 200% 100%; /* 배경 크기 조정 */
+  animation: gradient 5s ease infinite; /* 배경 애니메이션 */
+  margin: 2em auto; /* 상하 여백 추가, 좌우 중앙 정렬 */
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 폼 스타일 */
+.form-container {
+  width: 100%; /* 부모 요소 너비에 맞게 조정 */
+  max-width: 1200px; /* 최대 너비 설정 */
+  min-height: 70vh; /* 최소 높이 설정 */
+  background: #e0e0e0; /* 배경 색상 */
+  border-radius: 50px; /* 테두리 둥글게 처리 */
+  box-shadow: inset 20px 20px 60px #bebebe, /* 내부 그림자 */
+              inset -20px -20px 60px #ffffff; /* 내부 그림자 */
+  padding: 32px 24px; /* 내부 여백 */
+  font-size: 14px; /* 폰트 크기 */
+  font-family: inherit; /* 상속된 폰트 사용 */
+  color: #333; /* 텍스트 색상 */
+  display: flex; /* Flexbox 사용 */
+  flex-direction: column; /* 수직 방향으로 정렬 */
+  gap: 20px; /* 내부 요소 간격 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 너비/높이 계산 */
+  margin: 2em auto; /* 상하 여백 추가, 좌우 중앙 정렬 */
+}
+
+.form-container .form {
+  display: flex; /* Flexbox 사용 */
+  flex-direction: column; /* 수직 방향으로 정렬 */
+  gap: 20px; /* 내부 요소 간격 */
+  flex: 1; /* 가능한 공간을 차지하도록 설정 */
+}
+
+.form-container .form-group {
+  display: flex; /* Flexbox 사용 */
+  flex-direction: column; /* 수직 방향으로 정렬 */
+  gap: 2px; /* 내부 요소 간격 */
+}
+
+.form-container .form-group label {
+  margin-bottom: 5px; /* 아래 여백 */
+  color: #717171; /* 레이블 색상 */
+  font-weight: 600; /* 폰트 굵기 */
+  font-size: 20px; /* 폰트 크기 */
+}
+
+.form-container .form-group input,
+.form-container .form-group textarea {
+  width: 100%; /* 가로 너비 100% */
+  padding: 12px 16px; /* 내부 여백 */
+  border-radius: 8px; /* 테두리 둥글게 처리 */
+  color: #333; /* 텍스트 색상 */
+  background-color: transparent; /* 배경 투명 */
+  border: 1px solid #414141; /* 테두리 색상 */
+  font-family: inherit; /* 상속된 폰트 사용 */
+}
+
+.form-container .form-group textarea {
+  resize: none; /* 크기 조절 비활성화 */
+  min-height: 40vh; /* 최소 높이 설정 */
+  max-height: 500px; /* 최대 높이 설정 */
+}
+
+.form-container .form-group input::placeholder,
+.form-container .form-group textarea::placeholder {
+  opacity: 0.5; /* 플레이스홀더 텍스트 투명도 */
+}
+
+.form-container .form-group input:focus,
+.form-container .form-group textarea:focus {
+  outline: none; /* 포커스 아웃라인 제거 */
+  border-color: #e81cff; /* 포커스 시 테두리 색상 변경 */
+}
+
+.form-container .form-submit-btn {
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 중앙 정렬 */
+  justify-content: center; /* 중앙 정렬 */
+  font-family: inherit; /* 상속된 폰트 사용 */
+  color: #717171; /* 텍스트 색상 */
+  font-weight: 600; /* 폰트 굵기 */
+  width: 40%; /* 너비 설정 */
+  background: #313131; /* 배경 색상 */
+  border: 1px solid #414141; /* 테두리 색상 */
+  padding: 12px 16px; /* 내부 여백 */
+  gap: 8px; /* 내부 요소 간격 */
+  margin: 5px auto 15px auto; /* 상하 여백, 좌우 중앙 정렬 */
+  cursor: pointer; /* 커서 모양 */
+  border-radius: 6px; /* 테두리 둥글게 처리 */
+  font-size: 20px; /* 폰트 크기 */
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #fff; /* 호버 시 배경 색상 변경 */
+  color: #313131; /* 호버 시 텍스트 색상 변경 */
+  border-color: #fff; /* 호버 시 테두리 색상 변경 */
+}
+
+/* 미디어 쿼리로 작은 화면에 대한 조정 */
+@media (max-width: 768px) {
+  .form-container {
+    width: 90%; /* 너비 조정 */
+    padding: 16px; /* 내부 여백 조정 */
+  }
+  .form-container .form-submit-btn {
+    width: 100%; /* 버튼 너비 조정 */
+  }
+  .form-container .form-group textarea {
+    min-height: 30vh; /* 최소 높이 조정 */
+  }
+}
+
+/* 카드 스타일 */
+.card-detail {
+  width: 90vw; /* 화면의 90% 크기 */
+  max-width: 1200px; /* 최대 너비 설정 */
+  min-height: 60vh; /* 기본 높이 설정 */
+  border-radius: 50px; /* 둥근 테두리 설정 */
+  background: #e0e0e0; /* 배경색 설정 */
+  box-shadow: 20px 20px 39px #bebebe, /* 그림자 설정 */
+              -20px -20px 39px #ffffff;
+  color: #212121; /* 텍스트 색상 설정 */
+  display: flex;
+  flex-direction: column;
+  padding: 2em; /* 내부 여백 설정 */
+  position: relative;
+  margin: 2em auto; /* 중앙 정렬 */
+}
+
+.card-header {
+  font-size: 2em; /* 제목 폰트 크기 */
+  margin-bottom: 0.5em;
+}
+
+.card-body {
+  flex: 1; /* 내용이 공간을 차지하도록 설정 */
+  overflow: auto; /* 스크롤 가능 */
+}
+
+.card-text {
+  margin: 0;
+}
+
+.card-footer {
+  font-size: 1em; /* 작성 시간 폰트 크기 */
+  color: #ccc;
+  margin-top: 1em;
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  margin-top: 1em;
+  margin-bottom: 1em;
+  gap: 1em; /* 버튼 간의 간격 조정 */
+}
+
+/* 버튼 공통 스타일 */
+.btn-common {
+  padding: 1em 1.5em; /* 패딩 설정 */
+  max-width: 150px; /* 최대 너비 설정 */
+  min-width: 120px; /* 최소 너비 설정 */
+  background: none;
+  border: 2px solid #fff;
+  font-size: 15px;
+  color: #131313;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  border-radius: 12px;
+  font-weight: bolder;
+  box-shadow: 0 2px 0 2px #000;
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+/* 버튼 호버 및 클릭 효과 */
+.btn-common:before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 120%;
+  background-color: #ff6700; /* 호버 효과 색상 */
+  top: 50%;
+  transform: skewX(30deg) translate(-150%, -50%);
+  transition: all 0.5s;
+}
+
+.btn-common:hover {
+  background-color: #4cc9f0; /* 호버 시 배경 색상 */
+  color: #fff;
+  box-shadow: 0 2px 0 2px #0d3b66;
+}
+
+.btn-common:hover::before {
+  transform: skewX(30deg) translate(150%, -50%);
+  transition-delay: 0.1s;
+}
+
+.btn-common:active {
+  transform: scale(0.9);
+}
+
+/* 수정 버튼 스타일 */
+.btn-edit {
+  background-color: #ecd448; /* 수정 버튼의 배경색 */
+  color: #131313; /* 텍스트 색상 */
+  /* 추가 스타일 설정 */
+}
+
+/* 삭제 버튼 스타일 */
+.btn-delete {
+  background-color: #d9534f; /* 삭제 버튼의 배경색 */
+  color: #fff; /* 텍스트 색상 흰색 */
+  /* 추가 스타일 설정 */
+}
+
+/* 리스트 테이블 */
+/* 테이블 스타일 */
+/* 테이블 스타일 */
+.table-list {
+  width: 100%;
+  max-width: 1000px; /* 최대 너비 설정 */
+  margin: 20px auto; /* 자동 중앙 정렬 */
+  border-collapse: collapse; /* 테두리 */
+  border-radius: 30px; /* 테두리 둥글기 설정 */
+  background: #e0e0e0; /* 배경 색상 */
+  box-shadow: 23px 23px 37px #b1b1b1, -23px -23px 37px #ffffff; /* 그림자 효과 */
+  overflow: hidden; /* 테두리 밖의 콘텐츠 숨김 처리 */
+}
+
+.table-list th, .table-list td {
+  padding: 15px;
+  border: none; /* 테두리 색상 */
+  text-align: left; /* 텍스트 정렬 */
+}
+
+.table-list thead {
+  background-color: #f8f9fa; /* 헤더 배경 색상 */
+}
+
+.table-list tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* 짝수 행 배경 색상 */
+}
+
+.table-list tbody tr:hover {
+  background-color: #e0e0e0; /* 호버 시 배경 색상 */
+}
+
+.table-list tfoot {
+  background-color: #f8f9fa; /* tfoot 배경 색상 */
+  border-top: 2px solid #ddd; /* 테두리 색상 */
+}
+
+.table-list tfoot td {
+  padding: 1em; /* 패딩 설정 */
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  gap: 1em; /* 버튼 사이 간격 추가 */
+}
+
+/* 버튼 스타일 */
+.btn-list {
+  padding: 1.1em 2em; /* 버튼 패딩 */
+  background-color: #ecd448; /* 버튼 배경 색상 */
+  border: 2px solid #fff; /* 버튼 테두리 */
+  font-size: 15px; /* 버튼 폰트 크기 */
+  color: #131313; /* 버튼 텍스트 색상 */
+  cursor: pointer; /* 포인터 커서 */
+  position: relative; /* 상대 위치 */
+  overflow: hidden; /* 오버플로우 숨기기 */
+  transition: all 0.3s; /* 부드러운 전환 효과 */
+  border-radius: 12px; /* 버튼 모서리 둥글기 */
+  font-weight: bolder; /* 폰트 굵기 */
+  box-shadow: 0 2px 0 2px #000; /* 그림자 효과 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.btn-list:before {
+  content: "";
+  position: absolute;
+  width: 100px; /* 배경 색상 */
+  height: 120%; /* 높이 설정 */
+  background-color: #ff6700; /* 배경 색상 */
+  top: 50%;
+  transform: skewX(30deg) translate(-150%, -50%); /* 변환 효과 */
+  transition: all 0.5s; /* 부드러운 전환 효과 */
+}
+
+.btn-list:hover {
+  background-color: #4cc9f0; /* 버튼 호버 시 배경 색상 */
+  color: #fff; /* 버튼 호버 시 텍스트 색상 */
+  box-shadow: 0 2px 0 2px #0d3b66; /* 버튼 호버 시 그림자 색상 */
+}
+
+.btn-list:hover::before {
+  transform: skewX(30deg) translate(150%, -50%); /* 호버 시 변환 효과 */
+  transition-delay: 0.1s; /* 호버 지연 시간 */
+}
+
+.btn-list:active {
+  transform: scale(0.9); /* 클릭 시 버튼 크기 축소 */
+}
+
+/* 페이지 네비게이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: space-between;; /* 네비게이션을 오른쪽으로 정렬 */
+  gap: 0.5em; /* 버튼 사이 간격 */
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-form input[type="text"] {
+  padding: 0.5em;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-right: 0.5em;
+}
+
+.search-form button {
+  padding: 0.5em 1em;
+  background-color: #ecd448;
+  border: 2px solid #ddd;
+  font-size: 14px;
+  color: #131313;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.search-form button:hover {
+  background-color: #4cc9f0;
+  color: #fff;
+}
+
+.page-nav {
+  padding: 0.5em 1em; /* 페이지 네비게이션 버튼 패딩 */
+  font-size: 14px; /* 폰트 크기 */
+  color: #131313; /* 텍스트 색상 */
+  text-decoration: none; /* 텍스트 장식 제거 */
+  cursor: pointer; /* 포인터 커서 */
+  border-radius: 12px; /* 모서리 둥글기 */
+  transition: background-color 0.3s, color 0.3s; /* 부드러운 전환 효과 */
+}
+
+.page-nav:hover {
+  background-color: #4cc9f0; /* 호버 시 배경 색상 */
+  color: #fff; /* 호버 시 텍스트 색상 */
+}
+
+/* 검색바 */
 /* From Uiverse.io by 0xnihilism */ 
 .c1-input {
   width: 100%;
@@ -830,288 +1296,111 @@
   text-shadow: 0px 0px 0 #000;
 }
 
-
-/* card-2 */
-.card-2 {
-	width: 100%;
-  max-width: 300px; /* 카드의 최대 너비 설정 */
-  height: auto; /* 높이는 내용에 맞게 조정 */
-  border-radius: 30px;
-  background: #e0e0e0;
-  box-shadow: 15px 15px 30px #bebebe,
-              -15px -15px 30px #ffffff;
-  padding: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* 제목과 내용을 카드 상하로 균일하게 배치 */
-  overflow: hidden; /* 내용이 카드 영역을 넘어가면 숨김 처리 */
+/* comment */
+/* comment */
+.card-comment {
+  width: 260px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.card-title {
-  font-size: 1.25rem;
-  margin-bottom: 10px; /* 제목과 내용 간격 조정 */
-  overflow: hidden;
-  text-overflow: ellipsis; /* 제목이 길 경우 생략 기호 추가 */
-  white-space: nowrap; /* 제목이 한 줄로 표시되게 설정 */
-}
-
-.card-text {
-  font-size: 1rem;
-  margin-bottom: 20px; /* 내용과 버튼 간격 조정 */
-  overflow: hidden;
-  text-overflow: ellipsis; /* 내용이 길 경우 생략 기호 추가 */
-  white-space: nowrap; /* 내용이 한 줄로 표시되게 설정 */
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border: none;
-  
-}
-/* ui-btn */
-.ui-btn {
-  color: white;
-  text-decoration: none;
-  font-size: 25px;
-  border: none;
-  background: none;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  display: inline-block;
-}
-
-.ui-btn::after, .ui-btn::before {
-  content: '';
-  width: 0%;
-  height: 2px;
-  background: #f44336;
-  display: block;
-  transition: width 0.5s;
-}
-
-.ui-btn::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.ui-btn::after {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.ui-btn:hover::after, .ui-btn:hover::before {
-  width: 100%;
-}
-
-
-/* From Uiverse.io by omriluz */ 
-.form-container {
-  width: 100%; /* 화면 크기에 따라 유연하게 조정 */
-  max-width: 1200px; /* 최대 너비 설정 */
-  min-height: 70vh; /* 최소 높이 설정 */
-  background: linear-gradient(#212121, #212121) padding-box,
-              linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
-  border: 2px solid transparent;
-  padding: 32px 24px;
-  font-size: 14px;
-  font-family: inherit;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  box-sizing: border-box;
-  border-radius: 16px;
-  background-size: 200% 100%;
-  animation: gradient 5s ease infinite;
-  margin: auto; /* 중앙 배치 */
-  position: relative; /* 부모의 정렬을 따르게 설정 */
-  top: 50%; /* 상단에서 50% 아래로 */
-  transform: translateY(-50%); /* 본인의 높이 50%만큼 위로 */
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.form-container .form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex: 1; /* 폼이 가능한 공간을 차지하도록 설정 */
-}
-
-.form-container .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.form-container .form-group label {
-  margin-bottom: 5px;
-  color: #717171;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-.form-container .form-group input,
-.form-container .form-group textarea {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 8px;
+.chat-header {
+  background-color: #333;
   color: #fff;
-  background-color: transparent;
-  border: 1px solid #414141;
-  font-family: inherit;
+  padding: 10px;
+  font-size: 18px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-.form-container .form-group textarea {
-  resize: none;
-  min-height: 40vh; /* 최소 높이 설정 */
-  max-height: 500px; /* 최대 높이 설정 */
+.chat-window {
+  height: 220px;
+  overflow-y: scroll;
 }
 
-.form-container .form-group input::placeholder,
-.form-container .form-group textarea::placeholder {
-  opacity: 0.5;
+.message-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.form-container .form-group input:focus,
-.form-container .form-group textarea:focus {
-  outline: none;
-  border-color: #e81cff;
-}
-
-.form-container .form-submit-btn {
+.chat-input {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-family: inherit;
-  color: #717171;
-  font-weight: 600;
-  width: 40%;
-  background: #313131;
-  border: 1px solid #414141;
-  padding: 12px 16px;
-  gap: 8px;
-  margin: 5px auto 15px auto;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.message-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.send-button {
+  border: none;
+  outline: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 20px;
 }
 
-.form-container .form-submit-btn:hover {
+.send-button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* 새로운 폼 스타일 */
+/* 새로운 폼 스타일 */
+.form-comment {
+  width: 80%; /* 폼의 너비를 70%로 설정 */
+  max-width: 500px; /* 최대 너비 설정 (원하는 경우 조정) */
   background-color: #fff;
-  color: #313131; /* hover 시 색상 변경 */
-  border-color: #fff;
-}
-
-/* 미디어 쿼리로 작은 화면에 대한 조정 */
-@media (max-width: 768px) {
-  .form-container {
-    width: 90%;
-    padding: 16px;
-  }
-  .form-container .form-submit-btn {
-    width: 100%;
-  }
-  .form-container .form-group textarea {
-    min-height: 30vh; /* 최소 높이 설정 */
-  }
-}
-
-/* 카드 스타일 */
-.card-detail {
-  width: 90vw; /* 화면의 90% 크기 */
-  max-width: 1200px; /* 최대 너비 설정 (필요에 따라 조정 가능) */
-  min-height: 60vh; /* 기본 높이를 화면 높이의 60%로 설정 (2배 정도 길게) */
-  border-radius: 30px;
-  background: #212121;
-  box-shadow: 15px 15px 30px rgb(25, 25, 25),
-              -15px -15px 30px rgb(60, 60, 60);
-  color: #fff; /* 전체 텍스트 색상을 흰색으로 설정 */
-  display: flex;
-  flex-direction: column;
-  padding: 2em; /* 패딩을 늘려서 카드 내부 여백을 확장 */
-  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* 내부 여백 추가 */
+  box-sizing: border-box;
   margin: 0 auto; /* 중앙 정렬 */
 }
 
-.card-header {
-  font-size: 2em; /* 제목 폰트 크기 증가 */
-  margin-bottom: 0.5em;
+/* 텍스트 입력 필드 스타일 */
+.form-comment input[type="text"] {
+  width: 100%; /* 전체 너비에 맞춤 */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px; /* 패딩을 늘려서 세로 크기 증가 */
+  font-size: 16px; /* 폰트 크기 증가 */
+  margin-bottom: 15px; /* 입력 폼과 제출 버튼 사이에 여백 추가 */
+  box-sizing: border-box; /* 패딩과 테두리 포함하여 전체 너비 조정 */
 }
 
-.card-body {
-  flex: 1; /* 내용이 공간을 차지하도록 설정 */
-  overflow: auto; /* 내용이 길어질 경우 스크롤이 가능하도록 설정 */
-}
-
-.card-text {
-  margin: 0;
-}
-
-.card-footer {
-  font-size: 1em; /* 작성 시간 폰트 크기 증가 */
-  color: #ccc;
-  margin-top: 1em;
-}
-
-.button-group {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1em;
-}
-
-.btn-detail {
-  padding: 1.1em 2em;
-  background: none;
-  border: 2px solid #fff;
-  font-size: 15px;
-  color: #131313;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-  border-radius: 12px;
-  background-color: #ecd448;
-  font-weight: bolder;
-  box-shadow: 0 2px 0 2px #000;
-}
-
-.btn-detail:before {
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 120%;
-  background-color: #ff6700;
-  top: 50%;
-  transform: skewX(30deg) translate(-150%, -50%);
-  transition: all 0.5s;
-}
-
-.btn-detail:hover {
-  background-color: #4cc9f0;
+/* 제출 버튼 스타일 */
+.form-comment input[type="submit"] {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #333;
   color: #fff;
-  box-shadow: 0 2px 0 2px #0d3b66;
+  font-size: 16px; /* 폰트 크기 증가 */
+  padding: 12px; /* 패딩을 늘려서 버튼의 세로 크기 증가 */
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.btn-detail:hover::before {
-  transform: skewX(30deg) translate(150%, -50%);
-  transition-delay: 0.1s;
+/* 제출 버튼 호버 스타일 */
+.form-comment input[type="submit"]:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }
 
-.btn-detail:active {
-  transform: scale(0.9);
-}
+
+

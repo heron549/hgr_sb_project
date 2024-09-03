@@ -9,20 +9,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Table(name = "user_comments") // 엔티티 'Comment'가 'user_comments' 테이블에 매핑됨
 @Entity
 public class Comment {
 
 	@Id
-	// 오라클 11g 미지원 , 18이상은 지원
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	// 오라클 11g에 맞게 수정
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_generator1")
-    @SequenceGenerator(name = "sequence_generator1", sequenceName = "sequence_name1", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_generator2")
+    @SequenceGenerator(name = "sequence_generator2", sequenceName = "sequence_name2", allocationSize = 1)
 	private Integer id;
 
 	@Column(length = 512)

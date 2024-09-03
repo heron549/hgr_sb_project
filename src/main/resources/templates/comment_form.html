@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- 상속을 통해 레이아웃 적용 -->
+<html layout:decorate="~{lib/layout}">
+
+<div layout:fragment="content" class="wrapper">
+
+	<!-- spinner -->
+	<div th:replace="~{lib/spinner.html :: sagment_spinner}"></div>
+	<!-- /.spinner -->
+
+	<!-- topbar -->
+	<div th:replace="~{lib/topbar.html :: sagment_topbar}"></div>
+	<!-- /.topbar -->
+	
+	
+	<!-- navbar -->
+	<div th:replace="~{lib/navbar.html :: sagment_navbar}"></div>
+	<!-- /.navbar -->
+	
+	
+	<!-- carousel2 -->
+	<div th:replace="~{lib/carousel2.html :: sagment_carousel2}"></div>
+	<!-- /.carousel2 -->
+	
+
+	
+	<!-- Content Wrapper. Contains page content -->
+	<div th:replace="~{pages/article_form_content.html :: frag_index_content}"></div>
+	
+	
+
+
+
+</div>
+</html>

@@ -15,9 +15,12 @@ import com.hgr.project.service.ArticleService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RequestMapping("/article")
@@ -34,6 +37,8 @@ public class ArticleController {
 	public String list(Model model) {
 		List<Article> articles = this.articleService.getAllArticle();
 		model.addAttribute("articles", articles);
+		model.addAttribute("dumy_year", 2024);
+		model.addAttribute("articleCount", articles.size()); // 게시물 수 추가
 		
 		return "article_list";
 	}
@@ -42,7 +47,7 @@ public class ArticleController {
 	
 	
 	@GetMapping("/detail/{id}")
-	public String detail(Model model, @PathVariable("id") Integer id//, CommentForm commentForm 
+	public String detail(Model model, @PathVariable("id") Integer id, CommentForm commentForm 
 			) {
 		
 		Article a = this.articleService.getOneArticle(id);
@@ -74,6 +79,36 @@ public class ArticleController {
 	}
 	
 	
+	
+	
+	@GetMapping("/modify/{id}")
+	public String modify(Model model, ArticleForm articleForm, @PathVariable("id") Integer id) {
+		Article article = this.articleService.getOneArticle(id);
+		articleForm.setSubject( article.getSubject() );
+		articleForm.setContent( article.getContent() );
+		model.addAttribute("method", "put");
+		return "article_form";
+	}
+	
+	@PutMapping("/modify/{id}")
+	public String modify(@Valid ArticleForm articleForm, BindingResult bindingResult,
+			 			 @PathVariable("id") Integer id) {
+		if( bindingResult.hasErrors() ) {
+			return "article_form";
+		}
+		Article article = this.articleService.getOneArticle(id);
+		article.setSubject( articleForm.getSubject() );
+		article.setContent( articleForm.getContent() );
+		this.articleService.modify(article);
+		return "redirect:/article/detail/" + id;
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		Article article = this.articleService.getOneArticle(id);
+		this.articleService.delete( article );
+		return "redirect:/article/list";
+	}
 	
 	
 
