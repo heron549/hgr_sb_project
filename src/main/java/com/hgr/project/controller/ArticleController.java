@@ -71,7 +71,7 @@ public class ArticleController {
 	public String create(@Valid ArticleForm articleForm, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
-			return "article_form" ;
+			return "article_form";
 		}
 		this.articleService.create(articleForm.getSubject(), articleForm.getContent());
 		

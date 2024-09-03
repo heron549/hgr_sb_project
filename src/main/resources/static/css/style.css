@@ -884,10 +884,10 @@
 
 /* 카드 스타일 */
 .card-detail {
-  width: 90vw; /* 화면의 90% 크기 */
+  width: 90vw; /* 화면의 90% 너비 */
   max-width: 1200px; /* 최대 너비 설정 */
-  min-height: 60vh; /* 기본 높이 설정 */
-  border-radius: 50px; /* 둥근 테두리 설정 */
+  min-height: 60vh; /* 최소 높이 설정 */
+  border-radius: 16px; /* 둥근 테두리 설정 */
   background: #e0e0e0; /* 배경색 설정 */
   box-shadow: 20px 20px 39px #bebebe, /* 그림자 설정 */
               -20px -20px 39px #ffffff;
@@ -895,36 +895,46 @@
   display: flex;
   flex-direction: column;
   padding: 2em; /* 내부 여백 설정 */
-  position: relative;
   margin: 2em auto; /* 중앙 정렬 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 너비/높이 계산 */
 }
 
+/* 제목 스타일 */
 .card-header {
   font-size: 2em; /* 제목 폰트 크기 */
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5em; /* 제목 하단 여백 */
+  word-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+  overflow-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
 }
 
+/* 본문 스타일 */
 .card-body {
   flex: 1; /* 내용이 공간을 차지하도록 설정 */
-  overflow: auto; /* 스크롤 가능 */
+  margin-bottom: 1em; /* 본문 하단 여백 */
+  padding: 0; /* 내부 여백 제거 */
+  overflow: visible; /* 스크롤 숨기지 않고 내용이 아래로 늘어나도록 설정 */
 }
 
+/* 본문 텍스트 스타일 */
 .card-text {
   margin: 0;
+  word-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+  overflow-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
 }
 
+/* 푸터 스타일 */
 .card-footer {
   font-size: 1em; /* 작성 시간 폰트 크기 */
   color: #ccc;
-  margin-top: 1em;
+  margin-top: 1em; /* 푸터 상단 여백 */
 }
 
 /* 버튼 그룹 스타일 */
 .button-group {
   display: flex;
   justify-content: flex-start; /* 왼쪽 정렬 */
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 1em; /* 버튼 상단 여백 */
+  margin-bottom: 1em; /* 버튼 하단 여백 */
   gap: 1em; /* 버튼 간의 간격 조정 */
 }
 
@@ -978,14 +988,25 @@
 .btn-edit {
   background-color: #ecd448; /* 수정 버튼의 배경색 */
   color: #131313; /* 텍스트 색상 */
-  /* 추가 스타일 설정 */
 }
 
 /* 삭제 버튼 스타일 */
 .btn-delete {
   background-color: #d9534f; /* 삭제 버튼의 배경색 */
   color: #fff; /* 텍스트 색상 흰색 */
-  /* 추가 스타일 설정 */
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 768px) {
+  .card-detail {
+    width: 95vw; /* 화면 크기에 맞춰 너비 조정 */
+    padding: 1em; /* 내부 여백 조정 */
+  }
+  
+  .btn-common {
+    max-width: 120px; /* 버튼 최대 너비 조정 */
+    min-width: 100px; /* 버튼 최소 너비 조정 */
+  }
 }
 
 /* 리스트 테이블 */
@@ -1360,8 +1381,8 @@
 /* 새로운 폼 스타일 */
 /* 새로운 폼 스타일 */
 .form-comment {
-  width: 80%; /* 폼의 너비를 70%로 설정 */
-  max-width: 500px; /* 최대 너비 설정 (원하는 경우 조정) */
+  width: 100%; /* 폼의 너비를 100%로 설정하여 부모 요소의 너비에 맞춤 */
+  max-width: 1100px; /* 최대 너비를 700px로 설정 (필요에 따라 조정) */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -1384,7 +1405,7 @@
 
 /* 제출 버튼 스타일 */
 .form-comment input[type="submit"] {
-  width: 100%;
+  width: 100%; /* 전체 너비에 맞춤 */
   border: none;
   outline: none;
   background-color: #333;
@@ -1404,3 +1425,56 @@
 
 
 
+
+
+
+
+/* 댓글 카드 스타일 */
+.card-comments {
+  width: 70vw; /* 화면의 70% 너비 (가로 길이 약간 늘림) */
+  max-width: 800px; /* 최대 너비 설정 */
+  min-height: 10vh; /* 세로 길이 2배 줄임 */
+  border-radius: 16px; /* 둥근 테두리 설정 */
+  background: #e0e0e0; /* 배경색 설정 */
+  box-shadow: 15px 15px 30px #bebebe, /* 그림자 설정 */
+              -15px -15px 30px #ffffff;
+  color: #212121; /* 텍스트 색상 설정 */
+  display: flex;
+  flex-direction: column;
+  padding: 1em; /* 내부 여백 설정 */
+  margin: 1em auto; /* 중앙 정렬 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 너비/높이 계산 */
+}
+
+/* 제목 스타일 */
+.card-comments-header {
+  font-size: 0.8em; /* 제목 폰트 크기 더 감소 */
+  margin-bottom: 0.5em; /* 제목 하단 여백 */
+  word-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+  overflow-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+}
+
+/* 본문 스타일 */
+.card-comments-body {
+  flex: 1; /* 내용이 공간을 차지하도록 설정 */
+  margin-bottom: 0.5em; /* 본문 하단 여백 */
+  padding: 0; /* 내부 여백 제거 */
+  overflow: visible; /* 스크롤 숨기지 않고 내용이 아래로 늘어나도록 설정 */
+}
+
+/* 본문 텍스트 스타일 */
+.card-comments-text {
+  margin: 0;
+  font-size: 0.5em; /* 텍스트 폰트 크기 더 감소 */
+  word-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+  overflow-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+}
+
+/* 버튼 스타일 제거 */
+
+/* 날짜 푸터 스타일 */
+.card-comments-footer {
+  font-size: 0.7em; /* 날짜 폰트 크기 */
+  color: #999; /* 연한 회색 */
+  margin-top: 1em; /* 푸터 상단 여백 */
+}

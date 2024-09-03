@@ -15,34 +15,50 @@
 							<p class="card-text" th:text="${ article.content}"></p>
 						</div>
 						<div class="card-footer">
-							<div
-								th:text="${ #temporals.format( article.getCreateDate(), 'yyyy-MM-dd HH:mm:ss')  }"></div>
+							<div th:text="${ #temporals.format( article.getCreateDate(), 'yyyy-MM-dd HH:mm:ss')  }">
+							</div>
 
 						</div>
 						<div class="button-group">
-							<a class="btn-common btn-edit"
-								th:href="|/article/modify/${article.id}|">수정</a>
-							<form method="post"
-								th:action="@{|/article/delete/${article.id}|}">
+							<a class="btn-common btn-edit" th:href="|/article/modify/${article.id}|">수정</a>
+							<form method="post" th:action="@{|/article/delete/${article.id}|}">
 								<input type="hidden" name="_method" value="delete" /> <input
 									class="btn-common btn-delete" type="submit" value="삭제"></input>
 							</form>
 						</div>
-						<div class="card-header">댓글</div>
+						<div class="card-header" th:text="|댓글 ${#lists.size(article.commentList)}개|"></div>
 
 						<div class="card-header">
-							<form class="form-comment"
-								th:action="@{|/comment/create/${article.id}|}" method="post"
+							<form class="form-comment" th:action="@{|/comment/create/${article.id}|}" method="post"
 								th:object="${commentForm}">
 								<div th:replace="~{lib/frag :: formErrorFrag}"></div>
 								<!-- 사용자 입력 필드 -->
-								<input type="text" name="content" id="content"
-									placeholder="내용을 입력하세요" />
+								<input type="text" name="content" id="content" placeholder="내용을 입력하세요" />
 
 								<!-- 제출 버튼 -->
 								<input type="submit" value="댓글 등록" />
 							</form>
 						</div>
+
+						<div class="card-header">
+							<!-- 실습 5분, 리뷰 내용, 작성시간을 리스트로 표현하시오 -->
+
+							<div class="card-comments" th:each="comment : ${article.commentList}">
+								<div class="card-comments-header">
+									[[ |${ comment.content}| ]]
+								</div>
+								<div class="card-comments-footer">
+									<div
+										th:text="${ #temporals.format( comment.getCreateDate(), 'yyyy-MM-dd HH:mm:ss') }">
+									</div>
+<!--									<a th:href="|/comment/modify/${comment.id}|">수정</a>-->
+									<a th:href="|/comment/delete/${comment.id}|">삭제</a>
+								</div>
+
+							</div>
+
+						</div>
+
 
 					</div>
 
