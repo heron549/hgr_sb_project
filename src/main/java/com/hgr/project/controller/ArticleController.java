@@ -80,9 +80,10 @@ public class ArticleController {
 	}
 	
 	@PostMapping("/create")
-	public String create(@Valid ArticleForm articleForm, BindingResult bindingResult) {
+	public String create(@Valid ArticleForm articleForm, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("method", "post");
 			return "article_form";
 		}
 		this.articleService.create(articleForm.getSubject(), articleForm.getContent());
@@ -104,8 +105,10 @@ public class ArticleController {
 	
 	@PutMapping("/modify/{id}")
 	public String modify(@Valid ArticleForm articleForm, BindingResult bindingResult,
-			 			 @PathVariable("id") Integer id) {
+			 			 @PathVariable("id") Integer id, Model model) {
 		if( bindingResult.hasErrors() ) {
+			model.addAttribute("method", "put");
+		
 			return "article_form";
 		}
 		Article article = this.articleService.getOneArticle(id);
