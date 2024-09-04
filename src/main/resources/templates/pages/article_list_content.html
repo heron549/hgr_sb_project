@@ -16,8 +16,8 @@
 						</thead>
 						<tbody>
 							<tr th:each="article, idx: ${articles}">
-								<td th:text="${ idx.count + 1 }"></td>
-								<!-- 인덱스에 1을 더해 순번 표시 -->
+								<!-- 인덱스로 순번 표시 필요시 +1 함 -->
+								<td th:text="${ idx.count }"></td>
 								<td><a th:href="@{|/article/detail/${ article.id }|}"
 									th:text="${ article.subject }"></a></td>
 								<td
@@ -32,26 +32,7 @@
 									</div>
 								</td>
 							</tr>
-							<tr>
-								<td colspan="3">
-									<div class="pagination">
-									<form action="/search" method="GET" class="search-form">
-											<div class="search-form">
-											<input type="text" placeholder="검색어를 입력하세요">
-											<button type="button">검색</button>
-										</div>
-										</form>
-										<!-- 페이지 번호 및 이동 버튼을 여기에 추가합니다. -->
-										<div class="page-nav">
-											<a href="#" class="page-nav">◀</a> 
-											<a href="#" class="page-nav">1</a> 
-											<a href="#" class="page-nav">2</a> 
-											<a href="#" class="page-nav">3</a> 
-											<a href="#" class="page-nav">▶</a>
-										</div>
-									</div>
-								</td>
-							</tr>
+
 						</tfoot>
 					</table>
 

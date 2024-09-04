@@ -30,7 +30,6 @@ public class ArticleForm {
 	private String content;
 	
 	
-	//private List<Review> reviewList;
 
 		@Builder
 		public ArticleForm(String subject,String content) {

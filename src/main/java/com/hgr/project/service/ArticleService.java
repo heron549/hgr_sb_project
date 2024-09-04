@@ -50,5 +50,15 @@ public class ArticleService {
 		this.articleRepository.delete(article);
 		
 	}
+	
+	// 최신 게시글 1개 가져오기
+	public Article getLatestArticle() {
+		Article article = articleRepository.findFirstByOrderByCreateDateDesc();
+		if (article == null) {
+            throw new DataNotFoundException("article not found");
+        }
+		
+        return article;
+    }
 
 }

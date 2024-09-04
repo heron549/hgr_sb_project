@@ -12,6 +12,7 @@ import com.hgr.project.dto.CommentForm;
 import com.hgr.project.entity.Article;
 import com.hgr.project.entity.Comment;
 import com.hgr.project.service.ArticleService;
+import com.hgr.project.service.CommentService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,16 +30,27 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class ArticleController {
 	
 	public final ArticleService articleService;
+	public final CommentService commentService;
 	
 	
 	
 	
 	@GetMapping("/list")
 	public String list(Model model) {
+		
 		List<Article> articles = this.articleService.getAllArticle();
+		
+		long commentCount = this.commentService.getCommentCount();
+		
 		model.addAttribute("articles", articles);
 		model.addAttribute("dumy_year", 2024);
-		model.addAttribute("articleCount", articles.size()); // 게시물 수 추가
+		
+		// 게시물 수 표시
+		model.addAttribute("articleCount", articles.size()); 
+		
+		// 댓글 수 표시 (카운트 쿼리 사용)
+		model.addAttribute("commentCount", commentCount);
+		
 		
 		return "article_list";
 	}

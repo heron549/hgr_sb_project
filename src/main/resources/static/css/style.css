@@ -882,6 +882,17 @@
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
 /* 카드 스타일 */
 .card-detail {
   width: 90vw; /* 화면의 90% 너비 */
@@ -920,6 +931,8 @@
   margin: 0;
   word-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
   overflow-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+  white-space: pre-wrap; /* 공백 및 줄바꿈을 유지하면서 텍스트가 공간에 맞춰 줄바꿈됨 */
+  width: 100%; /* 텍스트가 카드의 폭에 맞춰서 줄바꿈됨 */
 }
 
 /* 푸터 스타일 */
@@ -928,6 +941,18 @@
   color: #ccc;
   margin-top: 1em; /* 푸터 상단 여백 */
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 버튼 그룹 스타일 */
 .button-group {
@@ -1053,8 +1078,8 @@
 /* 버튼 그룹 스타일 */
 .button-group {
   display: flex;
-  justify-content: center; /* 중앙 정렬 */
-  gap: 1em; /* 버튼 사이 간격 추가 */
+  justify-content: center; /* 정렬 위치 */
+  margin: 1em 2em; /* 상하좌우 여백 추가 */
 }
 
 /* 버튼 스타일 */
@@ -1100,56 +1125,7 @@
   transform: scale(0.9); /* 클릭 시 버튼 크기 축소 */
 }
 
-/* 페이지 네비게이션 스타일 */
-.pagination {
-  display: flex;
-  justify-content: space-between;; /* 네비게이션을 오른쪽으로 정렬 */
-  gap: 0.5em; /* 버튼 사이 간격 */
-}
 
-.search-form {
-  display: flex;
-  align-items: center;
-}
-
-.search-form input[type="text"] {
-  padding: 0.5em;
-  border: 2px solid #ddd;
-  border-radius: 12px;
-  font-size: 14px;
-  margin-right: 0.5em;
-}
-
-.search-form button {
-  padding: 0.5em 1em;
-  background-color: #ecd448;
-  border: 2px solid #ddd;
-  font-size: 14px;
-  color: #131313;
-  cursor: pointer;
-  border-radius: 12px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.search-form button:hover {
-  background-color: #4cc9f0;
-  color: #fff;
-}
-
-.page-nav {
-  padding: 0.5em 1em; /* 페이지 네비게이션 버튼 패딩 */
-  font-size: 14px; /* 폰트 크기 */
-  color: #131313; /* 텍스트 색상 */
-  text-decoration: none; /* 텍스트 장식 제거 */
-  cursor: pointer; /* 포인터 커서 */
-  border-radius: 12px; /* 모서리 둥글기 */
-  transition: background-color 0.3s, color 0.3s; /* 부드러운 전환 효과 */
-}
-
-.page-nav:hover {
-  background-color: #4cc9f0; /* 호버 시 배경 색상 */
-  color: #fff; /* 호버 시 텍스트 색상 */
-}
 
 /* 검색바 */
 /* From Uiverse.io by 0xnihilism */ 
@@ -1428,28 +1404,28 @@
 
 
 
-
 /* 댓글 카드 스타일 */
 .card-comments {
-  width: 70vw; /* 화면의 70% 너비 (가로 길이 약간 늘림) */
-  max-width: 800px; /* 최대 너비 설정 */
-  min-height: 10vh; /* 세로 길이 2배 줄임 */
-  border-radius: 16px; /* 둥근 테두리 설정 */
+  width: 100%; /* 화면의 85% 너비로 조정 (가로 길이 늘림) */
+  max-width: 800px; /* 최대 너비를 800px로 설정 */
+  min-height: 5vh; /* 세로 길이를 5vh로 조정 */
+  border-radius: 12px; /* 둥근 테두리 설정 */
   background: #e0e0e0; /* 배경색 설정 */
-  box-shadow: 15px 15px 30px #bebebe, /* 그림자 설정 */
-              -15px -15px 30px #ffffff;
+  box-shadow: 10px 10px 20px #bebebe, /* 그림자 설정 */
+              -10px -10px 20px #ffffff;
   color: #212121; /* 텍스트 색상 설정 */
   display: flex;
   flex-direction: column;
   padding: 1em; /* 내부 여백 설정 */
   margin: 1em auto; /* 중앙 정렬 */
   box-sizing: border-box; /* 패딩과 테두리를 포함한 너비/높이 계산 */
+  overflow: hidden;
 }
 
 /* 제목 스타일 */
 .card-comments-header {
-  font-size: 0.8em; /* 제목 폰트 크기 더 감소 */
-  margin-bottom: 0.5em; /* 제목 하단 여백 */
+  font-size: 0.6em; /* 제목 폰트 크기 줄임 */
+  margin-bottom: 0.5em; /* 제목 하단 여백 설정 */
   word-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
   overflow-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
 }
@@ -1457,7 +1433,7 @@
 /* 본문 스타일 */
 .card-comments-body {
   flex: 1; /* 내용이 공간을 차지하도록 설정 */
-  margin-bottom: 0.5em; /* 본문 하단 여백 */
+  margin-bottom: 0.5em; /* 본문 하단 여백 설정 */
   padding: 0; /* 내부 여백 제거 */
   overflow: visible; /* 스크롤 숨기지 않고 내용이 아래로 늘어나도록 설정 */
 }
@@ -1465,16 +1441,120 @@
 /* 본문 텍스트 스타일 */
 .card-comments-text {
   margin: 0;
-  font-size: 0.5em; /* 텍스트 폰트 크기 더 감소 */
+  font-size: 0.4em; /* 텍스트 폰트 크기 줄임 */
   word-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
   overflow-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
 }
 
-/* 버튼 스타일 제거 */
-
 /* 날짜 푸터 스타일 */
 .card-comments-footer {
-  font-size: 0.7em; /* 날짜 폰트 크기 */
+  font-size: 0.5em; /* 날짜 폰트 크기 줄임 */
   color: #999; /* 연한 회색 */
-  margin-top: 1em; /* 푸터 상단 여백 */
+  margin-top: 0.8em; /* 푸터 상단 여백 설정 */
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .card-comments {
+    width: 90vw; /* 작은 화면에서 너비를 90%로 조정 */
+    max-width: none; /* 최대 너비 제한 제거 */
+  }
+  .card-comments-header,
+  .card-comments-text,
+  .card-comments-footer {
+    font-size: 0.8em; /* 작은 화면에서 폰트 크기 조정 */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 댓글 입력/수정 폼 스타일 */
+.form-card-comments {
+  width: 100%; /* 화면의 85% 너비로 조정 (가로 길이 늘림) */
+  max-width: 800px; /* 최대 너비를 800px로 설정 */
+  min-height: 10vh; /* 최소 높이 설정 */
+  border-radius: 12px; /* 둥근 테두리 설정 */
+  background: #f9f9f9; /* 배경색 설정 (조금 밝은 회색) */
+  box-shadow: 10px 10px 20px #d3d3d3, /* 그림자 설정 */
+              -10px -10px 20px #ffffff;
+  color: #212121; /* 텍스트 색상 설정 */
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em; /* 내부 여백 설정 */
+  margin: 1em auto; /* 중앙 정렬 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 너비/높이 계산 */
+  overflow: hidden;
+}
+
+/* 폼 제목 스타일 */
+.form-card-comments-header {
+  font-size: 1.2em; /* 제목 폰트 크기 */
+  margin-bottom: 1em; /* 제목 하단 여백 설정 */
+  font-weight: bold; /* 제목 텍스트 강조 */
+  word-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+  overflow-wrap: break-word; /* 긴 텍스트 줄 바꿈 */
+}
+
+/* 폼 본문 스타일 */
+.form-card-comments-body {
+  flex: 1; /* 내용이 공간을 차지하도록 설정 */
+  margin-bottom: 1em; /* 본문 하단 여백 설정 */
+  padding: 0; /* 내부 여백 제거 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 입력 필드 스타일 */
+.form-card-comments-input {
+  width: 100%; /* 입력 필드 너비를 폼에 맞게 조정 */
+  padding: 0.8em; /* 내부 여백 설정 */
+  margin-bottom: 1em; /* 입력 필드 하단 여백 설정 */
+  border: 1px solid #ccc; /* 테두리 설정 */
+  border-radius: 8px; /* 둥근 테두리 설정 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 너비 계산 */
+  font-size: 1em; /* 폰트 크기 설정 */
+  resize: vertical; /* 세로로 크기 조정 가능하도록 설정 */
+}
+
+/* 제출 버튼 스타일 */
+.form-card-comments-submit {
+  align-self: flex-end; /* 버튼을 폼의 오른쪽 하단으로 정렬 */
+  padding: 0.8em 1.5em; /* 내부 여백 설정 */
+  border: none; /* 기본 테두리 제거 */
+  border-radius: 8px; /* 둥근 테두리 설정 */
+  background-color: #007bff; /* 버튼 배경색 설정 */
+  color: white; /* 버튼 텍스트 색상 설정 */
+  font-size: 1em; /* 버튼 폰트 크기 설정 */
+  cursor: pointer; /* 클릭할 수 있음을 나타내는 커서 설정 */
+  transition: background-color 0.3s ease; /* 배경색 변화에 대한 애니메이션 설정 */
+}
+
+.form-card-comments-submit:hover {
+  background-color: #0056b3; /* 버튼 호버 시 배경색 변경 */
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .form-card-comments {
+    width: 90vw; /* 작은 화면에서 너비를 90%로 조정 */
+    max-width: none; /* 최대 너비 제한 제거 */
+  }
+  .form-card-comments-header {
+    font-size: 1em; /* 작은 화면에서 폰트 크기 조정 */
+  }
+  .form-card-comments-input {
+    font-size: 0.9em; /* 입력 필드 폰트 크기 조정 */
+  }
+  .form-card-comments-submit {
+    padding: 0.6em 1.2em; /* 버튼 내부 여백 조정 */
+    font-size: 0.9em; /* 버튼 폰트 크기 조정 */
+  }
 }
