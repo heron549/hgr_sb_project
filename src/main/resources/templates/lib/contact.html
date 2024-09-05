@@ -1,24 +1,29 @@
 <!-- Contact Start -->
 <div th:fragment="sagment_contact" class="content-wrapper">
-	<div class="container-fluid py-5 mb-5">
-		<div class="container">
-			<div class="text-center mx-auto pb-5" style="max-width: 600px;">
-				<h1 class="mb-3">Find Us</h1>
-				<p class="mb-2">Here's our location on Google Maps.</p>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-lg-12">
-					<div class="rounded shadow-sm">
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d567.0441426694126!2d127.25628656963939!3d36.489297767205805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357acb40b32a75e7%3A0x564bbcb0a368c33!2z7IS47KeE7Yyw66as7Iqk!5e0!3m2!1sko!2skr!4v1724912439212!5m2!1sko!2skr"
-							width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-							referrerpolicy="no-referrer-when-downgrade">
-						</iframe>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+        <div class="container-fluid py-5 mb-5">
+            <div class="container">
+                <div class="text-center mx-auto pb-5" style="max-width: 600px;">
+                    <h1 class="mb-3">Find Us</h1>
+                    <p class="mb-2">Here's our location on Maps.</p>
+                </div>
+
+                <!-- Kakao Map -->
+                <div style="margin-bottom: 20px;">
+                    <iframe src="https://map.kakao.com" height="500" width="100%" style="border: none;"></iframe>
+                </div>
+
+                <!-- Google Map -->
+                <div style="display: flex; justify-content: center;">
+                    <div style="width: 100%; max-width: 100%;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d567.0441426694126!2d127.25628656963939!3d36.489297767205805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357acb40b32a75e7%3A0x564bbcb0a368c33!2z7IS47KeE7Yyw66as7Iqk!5e0!3m2!1sko!2skr!4v1724912439212!5m2!1sko!2skr"
+                            width="100%" height="500" style="border: none;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!-- Contact End -->

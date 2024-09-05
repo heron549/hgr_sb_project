@@ -50,6 +50,8 @@ public class CommentService {
 		this.commentRepository.save(Comment);
 	}
 
+	
+	// 댓글 수 표시
 	public long getCommentCount() {
 		
 		return this.commentRepository.countComments();
