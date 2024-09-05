@@ -51,9 +51,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     
     // 스프링 시큐리티
-    //implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
   	// 타임리프에서 스프링시큐리티 사용을 위한 모듈
-  	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+  	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
   	
   	// JWT
   	// 자바 JWT 라이브러리

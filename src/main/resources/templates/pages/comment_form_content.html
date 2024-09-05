@@ -14,8 +14,8 @@
 
 
 							<!-- 수동설정, csrf 관련 토큰 => 403 에러 회피 전략, 일단 주석처리 -->
-							<!-- <input type="hidden" th:name="${ _csrf.parameterName }" -->
-							<!-- th:value="${ _csrf.token }" /> -->
+							 <input type="hidden" th:name="${ _csrf.parameterName }" 
+							 th:value="${ _csrf.token }" /> 
 
 							<div th:replace="~{lib/frag :: formErrorFrag}"></div>
 
