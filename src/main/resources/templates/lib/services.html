@@ -1,5 +1,54 @@
 <!-- Services Start -->
 <div th:fragment="sagment_services" class="content-wrapper">
-	
+	<div class="container-fluid services py-5 mb-5">
+		<div class="container">
+			<div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s"
+				style="max-width: 600px;">
+				<h5 class="text-primary">Our Services</h5>
+			</div>
+			<div class="row g-5 services-inner">
+				<div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".3s">
+					<div class="services-item bg-light">
+						<div class="p-4 text-center services-content">
+							<div class="services-content-icon">
+								<i class="fa fa-code fa-7x mb-4 text-primary"></i>
+								<h4 class="mb-3">게시판</h4>
+								<a href="/article/list"
+									class="btn btn-secondary text-white px-5 py-3 rounded-pill">Read
+									More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".5s">
+					<div class="services-item bg-light">
+						<div class="p-4 text-center services-content">
+							<div class="services-content-icon">
+								<i class="fa fa-file-code fa-7x mb-4 text-primary"></i>
+								<h4 class="mb-3">글등록</h4>
+								<a th:href="@{/article/create}"
+									class="btn btn-secondary text-white px-5 py-3 rounded-pill">Read
+									More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s">
+					<div class="services-item bg-light">
+						<div class="p-4 text-center services-content">
+							<div class="services-content-icon">
+								<i class="fa fa-external-link-alt fa-7x mb-4 text-primary"></i>
+								<h4 class="mb-3">강의 영상</h4>
+								<a href="/videos"
+									class="btn btn-secondary text-white px-5 py-3 rounded-pill">Read
+									More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 </div>
 <!-- Services End -->

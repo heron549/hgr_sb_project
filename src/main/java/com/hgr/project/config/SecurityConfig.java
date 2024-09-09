@@ -40,7 +40,7 @@ public class SecurityConfig {
 			.authorizeHttpRequests( ( a ) -> a.requestMatchers
 				( new AntPathRequestMatcher("/h2-console/**") ).permitAll() )
 			.authorizeHttpRequests( ( a ) -> a.requestMatchers
-					( new AntPathRequestMatcher("/api/**") ).permitAll() )
+				( new AntPathRequestMatcher("/api/**") ).permitAll() )
 			.authorizeHttpRequests( ( a ) -> a.requestMatchers
 				( new AntPathRequestMatcher("/**") ).authenticated() )		
 			//.csrf().disable()
@@ -57,8 +57,10 @@ public class SecurityConfig {
 					)	
 			.logout((logout) -> logout
 	                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+	                //.deleteCookies("access_token")
 	                .logoutSuccessUrl("/user/login")
-	                .invalidateHttpSession(true))	
+	                .invalidateHttpSession(true)
+	                )
 			// TODO #0819 : 필터 기능 추가(요청이 처리되기전에 작동하는 필터)
 			.addFilterBefore(new TokenAuthenticationFilter(tokenProvider), 
 					UsernamePasswordAuthenticationFilter.class);

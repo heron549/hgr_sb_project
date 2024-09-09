@@ -78,7 +78,7 @@
 				</div>
 
 				<button class="enter" type="submit" style="margin-bottom: 0px;">Enter</button>
-				<div class="enter" style="display: flex; justify-content: center; align-items: center; height: 48px; margin-top: 0px; margin-bottom: 40px;">
+				<div class="enter" sec:authorize="isAnonymous()" style="display: flex; justify-content: center; align-items: center; height: 48px; margin-top: 0px; margin-bottom: 40px;">
 				    <a href="/user/signup" sec:authorize="isAnonymous()">Sign Up</a>
 				</div>
 

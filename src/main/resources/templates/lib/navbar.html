@@ -15,6 +15,24 @@
 				<div class="collapse navbar-collapse bg-transparent"
 					id="navbarCollapse">
 					<div class="navbar-nav ms-auto mx-xl-auto p-0">
+
+						<!-- Google 번역 -->
+						<div id="google_translate_element" class="nav-item nav-link"></div>
+						<script>
+							function googleTranslateElementInit() {
+								new google.translate.TranslateElement(
+										{
+											pageLanguage : 'ko',
+											includedLanguages : 'ko,zh-CN,zh-TW,ja,vi,th,tl,km,my,mn,ru,en,fr,ar',
+											layout : google.translate.TranslateElement.InlineLayout.SIMPLE,
+											autoDisplay : false
+										}, 'google_translate_element');
+							}
+						</script>
+						<script
+							src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+						<!-- //Google 번역 -->
+						
 						<a href="/" class="nav-item nav-link">Home</a> <a
 							href="/article/list" class="nav-item nav-link">게시판</a>
 						<div class="nav-item dropdown">
@@ -22,20 +40,18 @@
 								data-bs-toggle="dropdown">Pages</a>
 							<div class="dropdown-menu rounded">
 								<a href="/location" class="dropdown-item">지도</a><a
-									href="/videos" class="dropdown-item">강의 영상</a> <a
-									href="/game" class="dropdown-item">게임</a> <a
-									href="404.html" class="dropdown-item">404 Page</a>
+									href="/videos" class="dropdown-item">강의 영상</a> <a href="/game"
+									class="dropdown-item">게임</a> <a href="404.html"
+									class="dropdown-item">404 Page</a>
 							</div>
 						</div>
-						<li sec:authorize="isAnonymous()">
-								<a href="/user/login" class="nav-item nav-link">로그인</a>
-							</li>
-							<li sec:authorize="isAuthenticated()">
-									<a href="/user/logout" class="nav-item nav-link">로그아웃</a>
-								</li>
-								<li sec:authorize="isAnonymous()">
-										<a href="/user/signup" class="nav-item nav-link">회원가입</a>
-									</li>
+
+						<li sec:authorize="isAnonymous()"><a href="/user/login"
+							class="nav-item nav-link">로그인</a></li>
+						<li sec:authorize="isAuthenticated()"><a href="/user/logout"
+							class="nav-item nav-link">로그아웃</a></li>
+						<li sec:authorize="isAnonymous()"><a href="/user/signup"
+							class="nav-item nav-link">회원가입</a></li>
 					</div>
 				</div>
 				<div class="d-none d-xl-flex flex-shirink-0">

@@ -31,35 +31,35 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class UserController {
 	private final UserService userService;
-    private final TokenProvider tokenProvider;
-    private final TokenService tokenService;
-    private final JwtProperties jwtProperties;
-    private final UtilService utilService;
-	
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final TokenProvider tokenProvider;
+	private final TokenService tokenService;
+	private final JwtProperties jwtProperties;
+	private final UtilService utilService;
+
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@GetMapping("/signup")
 	public String signup(UserForm userForm) {
 		return "signup_form";
 	}
+
 	@PostMapping("/signup")
-	public String signup(@Valid UserForm userForm, BindingResult bindingResult, 
-			HttpServletResponse response) {
+	public String signup(@Valid UserForm userForm, BindingResult bindingResult, HttpServletResponse response) {
 		System.out.println("회원 가입 요청 왔다");
-		if( bindingResult.hasErrors() ) { // 입력 오류시 입력화면으로 리턴
+		if (bindingResult.hasErrors()) { // 입력 오류시 입력화면으로 리턴
 			return "signup_form";
 		}
 		System.out.println("비번체크");
-		if( !userForm.getPassword1().equals(userForm.getPassword2()) ) {
+		if (!userForm.getPassword1().equals(userForm.getPassword2())) {
 			bindingResult.rejectValue("password2", "passwordInCorrect", "패스워드가 서로 일치하지 않습니다.");
 			return "signup_form";
 		}
 		SnsUser snsUser;
 		try {
 			System.out.println("회원가입 진행");
-			snsUser = this.userService.create(userForm.getUsername(), 
-					userForm.getPassword1(), userForm.getEmail());
+			snsUser = this.userService.create(userForm.getUsername(), userForm.getPassword1(), userForm.getEmail());
 			System.out.println("회원 가입 완료");
-			
+
 		} catch (DataIntegrityViolationException e) {
 			bindingResult.reject("signupError", "이미 사용중인 아이디입니다.");
 			return "signup_form";
@@ -70,45 +70,68 @@ public class UserController {
 		// FIXME #REFACT: 0816 최종 작성 코드
 		// 1. 토큰 2개 발급(엑세스는 7일 짜리, 리프레시 30일짜리)
 		// 1-1. 현재시간 + 특정기간 = 만료시간으로 엑세스 토큰 발급
-		String accessToken  = this.tokenProvider.generateToken(snsUser, Duration.ofDays(7));
+		String accessToken = this.tokenProvider.generateToken(snsUser, Duration.ofDays(7));
 		// 1-2. 과거 만료시간으로 엑세스 토큰 발급
-		//String accessToken  = this.tokenProvider.reverseGenerateToken(snsUser, Duration.ofDays(7));
+		// String accessToken = this.tokenProvider.reverseGenerateToken(snsUser,
+		// Duration.ofDays(7));
 		String refreshToekn = this.tokenProvider.generateToken(snsUser, Duration.ofDays(30));
 		// 2. 리프레시 토큰 디비에 저장
 		this.tokenService.saveRefreshToken(snsUser.getId(), refreshToekn);
-		
+
 		// FIXME #REFACT: 쿠키 생성 및 설정 코드를 모듈화 하여 대체
 		// 3. 토큰을 클라이언트에게 전달 => 쿠키 설정, 쿠키의 만료시간은 토큰의 만료시간과 동일하게 구성
 		utilService.setCookie("access_token", accessToken, utilService.toSecoundOfDay(7), response);
 		utilService.setCookie("refresh_token", refreshToekn, utilService.toSecoundOfDay(30), response);
-		
+
 		// 4. 자동 로그인을 미지원 하므로, 로그인 화면으로 자동 리다이렉트 처리
 		return "redirect:/user/login";
+		//return "login_form";
 	}
-	
+
+//	@GetMapping("/login")
+//    public String login(HttpServletRequest request) {
+//		
+//		Cookie[] list = request.getCookies();
+//		//System.out.println("쿠키 획득" + list.length);
+//		for(Cookie cookie:list) {
+//			if(cookie.getName().equals("access_token")) {
+//				//System.out.println("access_token=" +  cookie.getValue() );			
+//			}
+//		}	
+//        return "login_form";
+//    }
+
+	// login 메소드 수정 9/6
 	@GetMapping("/login")
-    public String login(HttpServletRequest request) {
-		
+	public String login(HttpServletRequest request) {
+
 		Cookie[] list = request.getCookies();
-		//System.out.println("쿠키 획득" + list.length);
-		for(Cookie cookie:list) {
-			if(cookie.getName().equals("access_token")) {
-				//System.out.println("access_token=" +  cookie.getValue() );			
+
+		// 쿠키 배열이 null인지 확인
+		if (list != null) {
+			// System.out.println("쿠키 획득" + list.length);
+			for (Cookie cookie : list) {
+				if (cookie.getName().equals("access_token")) {
+					// System.out.println("access_token=" + cookie.getValue() );
+				}
 			}
-		}	
-        return "login_form";
-    }
+		} else {
+			// 쿠키 배열이 null인 경우 처리 (필요에 따라 로그를 남기거나 다른 처리를 할 수 있음)
+			// System.out.println("No cookies found.");
+			return "signup_form";
+		}
+		return "login_form";
+	}
+
 	// 리플레시 토큰을 이용하여 엑세스 토큰 재발행 -> 쿠키 저장 -> 홈피이동
 	@GetMapping("/reissue/{rToken}")
-	public String reissue(@PathVariable("rToken") String rToken
-			, HttpServletResponse response) {
+	public String reissue(@PathVariable("rToken") String rToken, HttpServletResponse response) {
 		// 리뷰때 시도, request 추가해서 쿠키를 통해 리프레시 토큰 직접 추출해서 사용
-		String accessToken = tokenService.createNewAccessToken(rToken, 24*7);
+		String accessToken = tokenService.createNewAccessToken(rToken, 24 * 7);
 		// 인증정보 추가 (현재는 생략)
 		// 쿠키 설정, 만료시간 7일
-		utilService.setCookie("access_token", accessToken, 
-				utilService.toSecoundOfDay(7), response);
-		// 화면이동(강제로 홈페이지로 이동, 컨셉)		
+		utilService.setCookie("access_token", accessToken, utilService.toSecoundOfDay(7), response);
+		// 화면이동(강제로 홈페이지로 이동, 컨셉)
 		return "redirect:/";
 	}
 }

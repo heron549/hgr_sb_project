@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 //@RequiredArgsConstructor
 @Controller
 public class ArticleController {
-	
+
 //	public final ArticleService articleService;
 //	public final CommentService commentService;
 	@Autowired
@@ -66,22 +66,21 @@ public class ArticleController {
 //
 //		return "article_list";
 //	}
-	
+
 	// ~/bbs/list?page=1 이런 방식으로 호출
 	@GetMapping("/list")
-	public String list(Model model,
-			@RequestParam(value="page", defaultValue = "0") int page) {
-		
+	public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
+
 		// 1. 특정 페이지(인자)에 해당되는 페이징 데이터 획득
 		Page<Article> paging = this.articleService.getList(page);
 		// 2. html에 전달
 		model.addAttribute("paging", paging);
 
-		// 게시글 수 표시 
+		// 게시글 수 표시
 //		List<Article> articles = this.articleService.getAllArticle();
 //		model.addAttribute("articleCount", articles.size());
 //		model.addAttribute("articles", articles);
-		
+
 		// 게시글 수 표시 (카운트 쿼리 사용)
 		long articleCount = this.articleService.getArticleCount();
 		model.addAttribute("articleCount", articleCount);
@@ -102,13 +101,11 @@ public class ArticleController {
 
 		return "article_list";
 	}
-	
+
 	// 검색어 획득, 검색 작업 실제 진행(서비스-레퍼지토리 처리), 타임리프 전달내용(검색어, 페이징번호)
 	@GetMapping("/list2")
-	public String list2 (Model model,
-			@RequestParam(value="page", defaultValue = "0") int page,
-			@RequestParam(value="keyword", defaultValue = "") String keyword
-			) {
+	public String list2(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
+			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
 		// 1. 특정 페이지(인자)에 해당되는 페이징 데이터 획득
 		Page<Article> paging = this.articleService.getList2(page, keyword);
 		// 2. html에 전달
@@ -116,13 +113,20 @@ public class ArticleController {
 		model.addAttribute("paging", paging);
 		// 검색된 게시글 개수 가져오기
 		model.addAttribute("articleCount", paging.getTotalElements());
-		
+
 		List<Article> articles = paging.getContent();
 		// 댓글 개수 계산
-		long totalComments = articles.stream()
-		                               .flatMap(article -> article.getCommentList().stream())
-		                               .count();
+		long totalComments = articles.stream().flatMap(article -> article.getCommentList().stream()).count();
 		model.addAttribute("commentCount", totalComments);
+
+		// 최신 게시물 가져오기
+		try {
+			Article latestArticle = articleService.getLatestArticle();
+			model.addAttribute("latestArticle", latestArticle);
+		} catch (DataNotFoundException e) {
+			model.addAttribute("message", e.getMessage());
+		}
+
 		return "article_list";
 	}
 
